@@ -9,4 +9,3 @@ class BagOfWords
       # TODO
     end
   end
-  

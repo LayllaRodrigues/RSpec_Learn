@@ -1,11 +1,11 @@
 class DeepThought
-	def initialize(printer)
-		@printer = printer
-	end
+  def initialize(printer)
+    @printer = printer
+  end
 
-	def print_the_answer
-		@printer.print("42")
-	end
+  def print_the_answer
+    @printer.print("42")
+  end
 end
 
 RSpec.describe DeepThought do

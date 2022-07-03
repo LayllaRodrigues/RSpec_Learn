@@ -1,6 +1,3 @@
-require "product"
-require "cart_of_products"
-
 RSpec.describe Cart do
   describe "#empty?" do
     it "returns true when the cart has no products" do

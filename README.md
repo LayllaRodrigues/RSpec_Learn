@@ -1,17 +1,25 @@
-Sobre o repositório:
-Este repositório contém varios exemplos direcionados a pratica de Test Driven Development na linguagem Ruby, utilizando RSpec para testes unitários, com seus Matchers e funções descritos em detalhes.
+### Sobre o repositório:
+  Este repositório contém varios exemplos direcionados a pratica de `Test Driven Development` na linguagem Ruby, utilizando RSpec para testes unitários, com seus Matchers e funções descritos em detalhes.
 
-Objetivo:
-Sumarizar todos os tipos de Matchers relacionados tanto aos objetos primários em Ruby (Enumerators, Classes), quanto os Matchers especificos (Erros de Execução e Matchers Customizados)
+### Objetivo:
+  Sumarizar todos os tipos de Matchers relacionados tanto aos objetos primários em Ruby (Enumerators, Classes), quanto os Matchers especificos (Erros de Execução e Matchers Customizados)
 
-Rspec Matchers:
-Um matcher no RSpec é um objeto que verifica o comportamento esperado nos testes unitários P/ iniciar o boiler de testes unitários, basta inserir no terminal o comando rspec --init
 
+### Rspec Matchers:
+> Um matcher no RSpec é um objeto que verifica o comportamento esperado nos testes unitários
+> P/ iniciar o boiler de testes unitários, basta inserir no terminal o comando `rspec --init`
+
+```
 expect(actual).to matcher(expected)
 expect(actual).to_not matcher(expected)
-Matchers relacionados a truthy e falsy (Booleans)
-São matchers que testam se um objeto retorna como true ou false.
+```
+ 
+--- 
 
+#### Matchers relacionados a truthy e falsy (Booleans)
+> São matchers que testam se um objeto retorna como true ou false.
+
+```
 # passa se obj é truthy (diferente de nil e false)
 expect(obj).to be_truthy
 # passa se obj é falsy (nil ou false)
@@ -20,9 +28,12 @@ expect(obj).to be_falsey
 expect(obj).to be_nil
 # passa se obj é truthy (não nil e não false)
 expect(obj).to be
-Matchers de equidade
-Compara se dois objetos são iguais, utilizando comparação genérica (==)
+```
 
+#### Matchers de equidade
+> Compara se dois objetos são iguais, utilizando comparação genérica (==)
+
+```
 a = "some string"
 b = "some string"
 a == b # true
@@ -34,9 +45,12 @@ expect(a).to equal(b) # passa quando a e b são referências
 expect(a).to be(b)    # equivalente a `expect(a).to equal(b)`
 expect(a).to eql(b)   # passa quando a e b possuem
                       # o mesmo hash code (a.eql?(b))
-Matchers relacionados a arrays
-Verifica se um array é "igual" ao outro, independente da ordem dos seus elementos
+```
 
+#### Matchers relacionados a arrays
+> Verifica se um array é "igual" ao outro, independente da ordem dos seus elementos
+
+```
 # MatchArray
 array = [1, 2, 3, 4]
 
@@ -72,7 +86,11 @@ expect(array).to start_with(1, 2)
 expect(array).not_to start_with(2)
 
 
-Matchers relacionados a Hashes
+```
+
+#### Matchers relacionados a Hashes
+
+```
 # MatchInclude
 hash = { a: 7, b: 5 }
 
@@ -90,9 +108,12 @@ expect(hash).not_to include(a: 11)
 expect(hash).not_to include(a: 13, c: 11)
 expect(hash).not_to include(:c, :d)
 
-Matchers relacionados a Strings
-Verifica o valor de uma string atráves de uma regex
+```
 
+#### Matchers relacionados a Strings
+> Verifica o valor de uma string atráves de uma regex 
+
+```
 # Matcher Match
 string = "gabriel schiavo"
 
@@ -118,9 +139,12 @@ expect(string).not_to start_with("schiavo")
 expect(string).to end_with("schiavo")
 expect(string).not_to end_with("gabriel")
 
-Predicate Matchers
-São matchers dinâmicos que invocam métodos atráves da metaprogramação
+```
 
+#### Predicate Matchers
+> São matchers dinâmicos que invocam métodos atráves da metaprogramação
+
+```
 
 hash = { key: 1 }
 # chama o método hash.has_key?(:key)
@@ -141,9 +165,14 @@ end
 # be_a_method_name / be_an_method_name
 expect(cart).to be_a_thing    # chama o método cart.thing?
 expect(cart).to be_an_object  # chama o método cart.object?
-Exceptions Matchers
-RaiseError Matcher é um método de um Matcher que levanta uma determinada exception
+```
 
+--- 
+
+####  Exceptions Matchers
+> `RaiseError Matcher` é um método de um Matcher que levanta uma determinada exception
+
+```
 
 expect { raise }.to raise_error
 expect { raise }.to raise_exception
@@ -169,7 +198,11 @@ expect { raise StandardError }.to_not raise_error(ArgumentError)
 expect { raise "error" }.to raise_error("error")
 expect { raise "error" }.to_not raise_error("other error")
 
-Matchers para comparação de números (Int)
+```
+
+#### Matchers para comparação de números (Int)
+
+```
 
 pi_number = 3.14
 expect(pi_number).to eq(3.14)
@@ -179,16 +212,23 @@ expect(7).to be > 1
 expect(7).to be <= 7
 expect(7).to be >= 7
 
-Matchers de Floats
-Normalmente utilizamos matchers que aproximam as casas decimais dos números fracionados
+```
 
+#### Matchers de Floats
+> Normalmente utilizamos matchers que aproximam as casas decimais dos números fracionados
+
+```
 
 expect(Math::PI).to be_within(0.01).of(3.14)
 
 # Intervalo válido entre delta e o número esperado
 expect(actual).to be_within(delta).of(expected)
 
-Matchers p/ Ranges
+```
+
+#### Matchers p/ Ranges
+
+```
 range = (1..10)
 
 expect(range).to cover(1)
@@ -196,9 +236,13 @@ expect(range).to cover(10)
 expect(range).to cover(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 expect(range).to cover(5, 6, 7, 8)
 
-Matchers de Classe
-Verifica qual a classe o objeto é
+```
 
+
+#### Matchers de Classe
+> Verifica qual a classe o objeto é
+
+```
 
 # be_an_instance_of verifica se o objeto é uma instância da
 # classe dada
@@ -216,9 +260,12 @@ expect(5).to be_a_kind_of(Object)
 
 expect(5).not_to be_a_kind_of(String)
 
-Matchers de mudanças de estado ou valor
-Usamos o ChangeMatcher quando queremos verificar que a execução de um bloco de código, cause uma mudança de estado em um objeto especifíco
+```
 
+#### Matchers de mudanças de estado ou valor
+> Usamos o `ChangeMatcher` quando queremos verificar que a execução de um bloco de código, cause uma mudança de estado em um objeto especifíco
+
+```
 
 RSpec.describe StateMachine do
   describe "#start" do
@@ -247,3 +294,4 @@ expect {
   team.add_players(some_players)
 }.to change(team, :size).by_at_least(1)
 
+```
